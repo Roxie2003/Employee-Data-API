@@ -1,11 +1,10 @@
 const app = require("express")();
 const PORT = 8080;
-const allEmployeeRoutes = require("./routes/allEmployee");
+const allEmployeeRoutes = require("./routes/allEmployees");
 const employeeRoutes = require("./routes/employee");
 const attendanceRoutes = require("./routes/attendance");
 
-
-app.use("/api/employee", allEmployeeRoutes);
+app.use("/api/employees", allEmployeeRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/employee/attendance", attendanceRoutes);
 
