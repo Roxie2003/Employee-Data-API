@@ -1,5 +1,5 @@
 const app = require("express")();
-const PORT = 8080;
+const PORT = 3000;
 const allEmployeeRoutes = require("./routes/allEmployees");
 const employeeRoutes = require("./routes/employee");
 const attendanceRoutes = require("./routes/attendance");
