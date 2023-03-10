@@ -14,7 +14,8 @@ const employeeDetails = [
       name: "ICICI Bank",
       IFSC_code: "ICIC0000999",
     },
-    attendance_url: "/api/employee/attendance/1",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/1",
   },
   {
     id: 2,
@@ -28,7 +29,8 @@ const employeeDetails = [
       name: "HDFC Bank",
       IFSC_code: "HDFC0000999",
     },
-    attendance_url: "/api/employee/attendance/2",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/2",
   },
   {
     id: 3,
@@ -42,7 +44,8 @@ const employeeDetails = [
       name: "SBI Bank",
       IFSC_code: "SBI0000999",
     },
-    attendance_url: "/api/employee/attendance/3",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/3",
   },
   {
     id: 4,
@@ -56,7 +59,8 @@ const employeeDetails = [
       name: "ICICI Bank",
       IFSC_code: "ICIC0000999",
     },
-    attendance_url: "/api/employee/attendance/4",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/4",
   },
   {
     id: 5,
@@ -70,7 +74,8 @@ const employeeDetails = [
       name: "HDFC Bank",
       IFSC_code: "HDFC0000999",
     },
-    attendance_url: "/api/employee/attendance/5",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/5",
   },
   {
     id: 6,
@@ -84,7 +89,8 @@ const employeeDetails = [
       name: "CBI Bank",
       IFSC_code: "CBI0000999",
     },
-    attendance_url: "/api/employee/attendance/6",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/6",
   },
   {
     id: 7,
@@ -98,7 +104,8 @@ const employeeDetails = [
       name: "ICICI Bank",
       IFSC_code: "ICIC0000999",
     },
-    attendance_url: "/api/employee/attendance/7",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/7",
   },
   {
     id: 8,
@@ -112,7 +119,8 @@ const employeeDetails = [
       name: "SBI Bank",
       IFSC_code: "SBI0000999",
     },
-    attendance_url: "/api/employee/attendance/8",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/8",
   },
   {
     id: 9,
@@ -126,7 +134,8 @@ const employeeDetails = [
       name: "CBI Bank",
       IFSC_code: "CBI0000999",
     },
-    attendance_url: "/api/employee/attendance/9",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/9",
   },
   {
     id: 10,
@@ -140,7 +149,8 @@ const employeeDetails = [
       name: "CBI Bank",
       IFSC_code: "CBI0000999",
     },
-    attendance_url: "/api/employee/attendance/10",
+    attendance_url:
+      "https://employee-data-api.vercel.app/api/employee/attendance/10",
   },
 ];
 
