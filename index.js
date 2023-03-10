@@ -1,8 +1,12 @@
 const app = require("express")();
+const cors = require("cors");
+
 const PORT = 3000;
 const allEmployeeRoutes = require("./routes/allEmployees");
 const employeeRoutes = require("./routes/employee");
 const attendanceRoutes = require("./routes/attendance");
+
+app.use(cors());
 
 app.use("/api/employees", allEmployeeRoutes);
 app.use("/api/employee", employeeRoutes);
