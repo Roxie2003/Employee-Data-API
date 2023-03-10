@@ -7,43 +7,43 @@ const allEmployees = {
   results: [
     {
       id: 1,
-      url: "/api/employee/1/",
+      url: "https://employee-data-api.vercel.app/api/employee/1/",
     },
     {
       id: 2,
-      url: "/api/employee/2/",
+      url: "https://employee-data-api.vercel.app/api/employee/2/",
     },
     {
       id: 3,
-      url: "/api/employee/3/",
+      url: "https://employee-data-api.vercel.app/api/employee/3/",
     },
     {
       id: 4,
-      url: "/api/employee/4/",
+      url: "https://employee-data-api.vercel.app/api/employee/4/",
     },
     {
       id: 5,
-      url: "/api/employee/5/",
+      url: "https://employee-data-api.vercel.app/api/employee/5/",
     },
     {
       id: 6,
-      url: "/api/employee/6/",
+      url: "https://employee-data-api.vercel.app/api/employee/6/",
     },
     {
       id: 7,
-      url: "/api/employee/7/",
+      url: "https://employee-data-api.vercel.app/api/employee/7/",
     },
     {
       id: 8,
-      url: "/api/employee/8/",
+      url: "https://employee-data-api.vercel.app/api/employee/8/",
     },
     {
       id: 9,
-      url: "/api/employee/9/",
+      url: "https://employee-data-api.vercel.app/api/employee/9/",
     },
     {
       id: 10,
-      url: "/api/employee/10/",
+      url: "https://employee-data-api.vercel.app/api/employee/10/",
     },
   ],
 };
