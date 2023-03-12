@@ -5,13 +5,13 @@ const PORT = 3000;
 const allEmployeeRoutes = require("./routes/allEmployees");
 const employeeRoutes = require("./routes/employee");
 const attendanceRoutes = require("./routes/attendance");
-var path = require('path')
-var serveStatic = require('serve-static')
+const cors = require("cors");
+var path = require("path");
+var serveStatic = require("serve-static");
 
-
-app.use(serveStatic(path.join(__dirname, 'public-optimized')))
-app.use(serveStatic(path.join(__dirname, 'public')))
-
+app.use(serveStatic(path.join(__dirname, "public-optimized")));
+app.use(serveStatic(path.join(__dirname, "public")));
+app.use(cors());
 app.use("/api/employees", allEmployeeRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/employee/attendance", attendanceRoutes);
