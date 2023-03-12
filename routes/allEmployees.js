@@ -50,7 +50,7 @@ const router = express.Router();
 */
 
 const allEmployees = {
-  count: 12,
+  count: 10,
   previous: null,
   results: [
     {
@@ -66,8 +66,43 @@ const allEmployees = {
         name: "ICICI Bank",
         IFSC_code: "ICIC0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/1",
+      attendance: [
+        {
+          month_year: "Aug22",
+          present_days: 21,
+          overtime_hrs: 3,
+        },
+        {
+          month_year: "Sep22",
+          present_days: 22,
+          overtime_hrs: 2,
+        },
+        {
+          month_year: "Oct22",
+          present_days: 20,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Nov22",
+          present_days: 22,
+          overtime_hrs: 3,
+        },
+        {
+          month_year: "Dec22",
+          present_days: 18,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Jan23",
+          present_days: 21,
+          overtime_hrs: 2,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 20,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 2,
@@ -82,8 +117,23 @@ const allEmployees = {
         name: "HDFC Bank",
         IFSC_code: "HDFC0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/2",
+      attendance: [
+        {
+          month_year: "Dec22",
+          present_days: 24,
+          overtime_hrs: 9,
+        },
+        {
+          month_year: "Jan23",
+          present_days: 20,
+          overtime_hrs: 3,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 3,
@@ -98,8 +148,33 @@ const allEmployees = {
         name: "SBI Bank",
         IFSC_code: "SBI0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/3",
+      attendance: [
+        {
+          month_year: "Oct22",
+          present_days: 23,
+          overtime_hrs: 10,
+        },
+        {
+          month_year: "Nov22",
+          present_days: 20,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Dec22",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Jan23",
+          present_days: 23,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 22,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 4,
@@ -114,8 +189,28 @@ const allEmployees = {
         name: "ICICI Bank",
         IFSC_code: "ICIC0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/4",
+      attendance: [
+        {
+          month_year: "Nov22",
+          present_days: 22,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Dec22",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Jan23",
+          present_days: 24,
+          overtime_hrs: 10,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 23,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 5,
@@ -130,8 +225,33 @@ const allEmployees = {
         name: "HDFC Bank",
         IFSC_code: "HDFC0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/5",
+      attendance: [
+        {
+          month_year: "Oct22",
+          present_days: 20,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Nov22",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Dec22",
+          present_days: 20,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Jan23",
+          present_days: 22,
+          overtime_hrs: 5,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 6,
@@ -146,8 +266,18 @@ const allEmployees = {
         name: "CBI Bank",
         IFSC_code: "CBI0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/6",
+      attendance: [
+        {
+          month_year: "Jan23",
+          present_days: 23,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 22,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 7,
@@ -162,8 +292,28 @@ const allEmployees = {
         name: "ICICI Bank",
         IFSC_code: "ICIC0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/7",
+      attendance: [
+        {
+          month_year: "Nov22",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Dec22",
+          present_days: 20,
+          overtime_hrs: 3,
+        },
+        {
+          month_year: "Jan23",
+          present_days: 22,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 24,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 8,
@@ -178,8 +328,13 @@ const allEmployees = {
         name: "SBI Bank",
         IFSC_code: "SBI0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/8",
+      attendance: [
+        {
+          month_year: "Feb23",
+          present_days: 23,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 9,
@@ -194,8 +349,18 @@ const allEmployees = {
         name: "CBI Bank",
         IFSC_code: "CBI0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/9",
+      attendance: [
+        {
+          month_year: "Jan23",
+          present_days: 23,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+      ],
     },
     {
       id: 10,
@@ -210,8 +375,38 @@ const allEmployees = {
         name: "CBI Bank",
         IFSC_code: "CBI0000999",
       },
-      attendance_url:
-        "https://employee-data-api.vercel.app/api/employee/attendance/10",
+      attendance: [
+        {
+          month_year: "Sep22",
+          present_days: 23,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Oct22",
+          present_days: 21,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Nov22",
+          present_days: 20,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Dec22",
+          present_days: 25,
+          overtime_hrs: 10,
+        },
+        {
+          month_year: "Jan23",
+          present_days: 22,
+          overtime_hrs: 0,
+        },
+        {
+          month_year: "Feb23",
+          present_days: 24,
+          overtime_hrs: 0,
+        },
+      ],
     },
   ],
 };
