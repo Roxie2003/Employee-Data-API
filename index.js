@@ -1,15 +1,17 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 
 const PORT = 3000;
 const allEmployeeRoutes = require("./routes/allEmployees");
 const employeeRoutes = require("./routes/employee");
 const attendanceRoutes = require("./routes/attendance");
-var path = require("path");
+var path = require('path')
+var serveStatic = require('serve-static')
 
-app.use(express.static("public"));
-app.use(cors());
+
+app.use(serveStatic(path.join(__dirname, 'public-optimized')))
+app.use(serveStatic(path.join(__dirname, 'public')))
+
 app.use("/api/employees", allEmployeeRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/employee/attendance", attendanceRoutes);
