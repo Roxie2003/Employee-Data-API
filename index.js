@@ -1,11 +1,15 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
 const cors = require("cors");
 
 const PORT = 3000;
 const allEmployeeRoutes = require("./routes/allEmployees");
 const employeeRoutes = require("./routes/employee");
 const attendanceRoutes = require("./routes/attendance");
+var path = require("path");
 
+app.use(express.static("public"));
+app.use("/images", express.static("images"));
 app.use(cors());
 app.use("/api/employees", allEmployeeRoutes);
 app.use("/api/employee", employeeRoutes);

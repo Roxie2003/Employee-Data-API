@@ -56,6 +56,7 @@ const allEmployees = {
     {
       id: 1,
       name: "Tiger Nixon",
+      image: "/images/1.jpg",
       base_salary: 320800,
       designation: "Software developer",
       location: "Nashik",
@@ -71,6 +72,7 @@ const allEmployees = {
     {
       id: 2,
       name: "Garrett Winters",
+      image: "/images/2.jpg",
       base_salary: 170750,
       designation: "Web developer",
       location: "Mumbai",
@@ -86,6 +88,7 @@ const allEmployees = {
     {
       id: 3,
       name: "Ashton Cox",
+      image: "/images/3.jpg",
       base_salary: 86000,
       designation: "Software developer",
       location: "Nashik",
@@ -101,6 +104,7 @@ const allEmployees = {
     {
       id: 4,
       name: "Cedric Kelly",
+      image: "/images/4.jpg",
       base_salary: 433060,
       designation: "Full Stack developer",
       location: "Pune",
@@ -116,6 +120,7 @@ const allEmployees = {
     {
       id: 5,
       name: "Airi Satou",
+      image: "/images/5.jpg",
       base_salary: 162700,
       designation: "Data scientist",
       location: "Nashik",
@@ -131,6 +136,7 @@ const allEmployees = {
     {
       id: 6,
       name: "Brielle Williamson",
+      image: "/images/6.jpg",
       base_salary: 372000,
       designation: "Web developer",
       location: "Banglore",
@@ -146,6 +152,7 @@ const allEmployees = {
     {
       id: 7,
       name: "Herrod Chandler",
+      image: "/images/7.jpg",
       base_salary: 137500,
       designation: "Mobile App developer",
       location: "Mumbai",
@@ -161,6 +168,7 @@ const allEmployees = {
     {
       id: 8,
       name: "Rhona Davidson",
+      image: "/images/8.jpg",
       base_salary: 327900,
       designation: "Full Stack developer",
       location: "Nashik",
@@ -176,6 +184,7 @@ const allEmployees = {
     {
       id: 9,
       name: "Colleen Hurst",
+      image: "/images/9.jpg",
       base_salary: 205500,
       designation: "Data Scientist",
       location: "Nashik",
@@ -191,6 +200,7 @@ const allEmployees = {
     {
       id: 10,
       name: "Sonya Frost",
+      image: "/images/10.jpg",
       base_salary: 103600,
       designation: "Data analyst",
       location: "Pune ",
