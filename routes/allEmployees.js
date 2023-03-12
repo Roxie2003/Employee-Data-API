@@ -55,7 +55,7 @@ const allEmployees = {
   results: [
     {
       id: 1,
-      employee_name: "Tiger Nixon",
+      name: "Tiger Nixon",
       base_salary: 320800,
       designation: "Software developer",
       location: "Nashik",
@@ -70,7 +70,7 @@ const allEmployees = {
     },
     {
       id: 2,
-      employee_name: "Garrett Winters",
+      name: "Garrett Winters",
       base_salary: 170750,
       designation: "Web developer",
       location: "Mumbai",
@@ -85,7 +85,7 @@ const allEmployees = {
     },
     {
       id: 3,
-      employee_name: "Ashton Cox",
+      name: "Ashton Cox",
       base_salary: 86000,
       designation: "Software developer",
       location: "Nashik",
@@ -100,7 +100,7 @@ const allEmployees = {
     },
     {
       id: 4,
-      employee_name: "Cedric Kelly",
+      name: "Cedric Kelly",
       base_salary: 433060,
       designation: "Full Stack developer",
       location: "Pune",
@@ -115,7 +115,7 @@ const allEmployees = {
     },
     {
       id: 5,
-      employee_name: "Airi Satou",
+      name: "Airi Satou",
       base_salary: 162700,
       designation: "Data scientist",
       location: "Nashik",
@@ -130,7 +130,7 @@ const allEmployees = {
     },
     {
       id: 6,
-      employee_name: "Brielle Williamson",
+      name: "Brielle Williamson",
       base_salary: 372000,
       designation: "Web developer",
       location: "Banglore",
@@ -145,7 +145,7 @@ const allEmployees = {
     },
     {
       id: 7,
-      employee_name: "Herrod Chandler",
+      name: "Herrod Chandler",
       base_salary: 137500,
       designation: "Mobile App developer",
       location: "Mumbai",
@@ -160,7 +160,7 @@ const allEmployees = {
     },
     {
       id: 8,
-      employee_name: "Rhona Davidson",
+      name: "Rhona Davidson",
       base_salary: 327900,
       designation: "Full Stack developer",
       location: "Nashik",
@@ -175,7 +175,7 @@ const allEmployees = {
     },
     {
       id: 9,
-      employee_name: "Colleen Hurst",
+      name: "Colleen Hurst",
       base_salary: 205500,
       designation: "Data Scientist",
       location: "Nashik",
@@ -190,7 +190,7 @@ const allEmployees = {
     },
     {
       id: 10,
-      employee_name: "Sonya Frost",
+      name: "Sonya Frost",
       base_salary: 103600,
       designation: "Data analyst",
       location: "Pune ",
