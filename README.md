@@ -13,3 +13,7 @@ $ npm start
 ```
 
   View the website at: http://localhost:8080
+
+#Status
+
+Project is in progress ⚙.
