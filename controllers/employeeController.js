@@ -3,24 +3,24 @@ const Employee = require("../models/Employee");
 const createEmployee = async (req, res) => {
   try {
     const {
-        name,
-        image,
-        base_salary,
-        designation,
-        location,
-        date_of_joining,
-        bank_details,
-        attendance
+      name,
+      image,
+      base_salary,
+      designation,
+      location,
+      date_of_joining,
+      bank_details,
+      attendance,
     } = req.body;
     let newEmployee = new Employee({
-        name,
-        image,
-        base_salary,
-        designation,
-        location,
-        date_of_joining,
-        bank_details,
-        attendance
+      name,
+      image,
+      base_salary,
+      designation,
+      location,
+      date_of_joining,
+      bank_details,
+      attendance,
     });
     await newEmployee.save();
     res.status(200).json({ data: newEmployee });
@@ -62,7 +62,7 @@ const updateEmployee = async (req, res) => {
       location,
       date_of_joining,
       bank_details,
-      attendance
+      attendance,
     } = req.body;
     const EmployeeById = await Employee.findById(req.params.id);
     if (!EmployeeById) {
@@ -81,7 +81,7 @@ const updateEmployee = async (req, res) => {
           location,
           date_of_joining,
           bank_details,
-          attendance
+          attendance,
         },
         { new: true }
       );
