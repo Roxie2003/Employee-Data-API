@@ -22,6 +22,10 @@ const salarySlipSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please add overtime pay"],
     },
+    base_salary: {
+      type: Number,
+      required: [true, "Pleease add base salary"],
+    },
     location: {
       type: String,
     },
@@ -66,4 +70,11 @@ const salarySlipSchema = new mongoose.Schema(
   }
 );
 
+salarySlipSchema.index(
+  {
+    employee_id: 1,
+    "attendance.0.month_year": 1,
+  },
+  { unique: true }
+);
 module.exports = mongoose.model("SalarySlip", salarySlipSchema);

@@ -23,4 +23,18 @@ const getSalarySlips = async (req, res) => {
   }
 };
 
-module.exports = { createSalarySlip, getSalarySlips };
+const getSalarySlipByMonthYear = async (req, res) => {
+  try {
+    const EmployeeId = req.params.id;
+    console.log(EmployeeId);
+    let SalarySlipsByEmpId = await SalarySlip.find({
+      employee_id: EmployeeId,
+      "attendance.0.month_year": req.params.month_year,
+    });
+    res.status(200).json({ data: SalarySlipsByEmpId });
+    return;
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+module.exports = { createSalarySlip, getSalarySlips, getSalarySlipByMonthYear };
