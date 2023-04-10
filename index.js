@@ -12,10 +12,6 @@ app.use(bodyParser.json());
 const cors = require("cors");
 const path = require("path");
 const serveStatic = require("serve-static");
-const {
-  createSalarySlip,
-  getSalarySlips,
-} = require("./controllers/employeeController");
 
 app.use(serveStatic(path.join(__dirname, "public-optimized")));
 app.use(serveStatic(path.join(__dirname, "public")));
