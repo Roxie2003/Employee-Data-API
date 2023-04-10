@@ -14,6 +14,10 @@ const salarySlipSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please add Id"],
     },
+    income_tax: {
+      type: Number,
+      required: [true, "Please add income tax amount"],
+    },
     location: {
       type: String,
     },

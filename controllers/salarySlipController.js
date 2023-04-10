@@ -2,26 +2,7 @@ const SalarySlip = require("../models/SalarySlip");
 
 const createSalarySlip = async (req, res) => {
   try {
-    const {
-      name,
-      designation,
-      employee_id,
-      location,
-      date_of_joining,
-      bank_details,
-      attendance,
-      total_salary,
-    } = req.body;
-    let newSalarySlip = new SalarySlip({
-      name,
-      designation,
-      employee_id,
-      location,
-      date_of_joining,
-      bank_details,
-      attendance,
-      total_salary,
-    });
+    let newSalarySlip = new SalarySlip(req.body);
     await newSalarySlip.save();
     res.status(200).json({ data: newSalarySlip });
     return;
