@@ -18,6 +18,10 @@ const salarySlipSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please add income tax amount"],
     },
+    overtime_pay: {
+      type: Number,
+      required: [true, "Please add overtime pay"],
+    },
     location: {
       type: String,
     },
@@ -61,4 +65,5 @@ const salarySlipSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
 module.exports = mongoose.model("SalarySlip", salarySlipSchema);
