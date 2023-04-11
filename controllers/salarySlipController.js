@@ -13,9 +13,7 @@ const createSalarySlip = async (req, res) => {
 
 const getSalarySlips = async (req, res) => {
   try {
-    const EmployeeId = req.params.id;
-    console.log(EmployeeId);
-    let SalarySlipsByEmpId = await SalarySlip.find({ employee_id: EmployeeId });
+    let SalarySlipsByEmpId = await SalarySlip.find();
     res.status(200).json({ data: SalarySlipsByEmpId });
     return;
   } catch (error) {
@@ -26,7 +24,6 @@ const getSalarySlips = async (req, res) => {
 const getSalarySlipByMonthYear = async (req, res) => {
   try {
     const EmployeeId = req.params.id;
-    console.log(EmployeeId);
     let SalarySlipsByEmpId = await SalarySlip.findOne({
       employee_id: EmployeeId,
       "attendance.month_year": req.params.month_year,
@@ -37,4 +34,28 @@ const getSalarySlipByMonthYear = async (req, res) => {
     res.status(400).json(error.message);
   }
 };
-module.exports = { createSalarySlip, getSalarySlips, getSalarySlipByMonthYear };
+
+const deleteSalarySlip = async (req, res) => {
+  try {
+    const SalarySlipId = req.params.salarySlipId;
+    let SalarySlipById = await SalarySlip.findById(SalarySlipId);
+    if (!SalarySlipById) {
+      req.status(400);
+      throw new Error("Salary Slip not found!");
+    }
+    if (SalarySlipById) {
+      await SalarySlip.deleteOne({ _id: SalarySlipId });
+      res.status(200).json({ success: true });
+      return;
+    }
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+module.exports = {
+  createSalarySlip,
+  getSalarySlips,
+  getSalarySlipByMonthYear,
+  deleteSalarySlip,
+};
