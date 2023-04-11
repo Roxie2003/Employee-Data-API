@@ -47,19 +47,17 @@ const salarySlipSchema = new mongoose.Schema(
         required: [true, "Please add bank IFSc code"],
       },
     },
-    attendance: [
-      {
-        month_year: {
-          type: String,
-        },
-        present_days: {
-          type: Number,
-        },
-        overtime_hrs: {
-          type: Number,
-        },
+    attendance: {
+      month_year: {
+        type: String,
       },
-    ],
+      present_days: {
+        type: Number,
+      },
+      overtime_hrs: {
+        type: Number,
+      },
+    },
     total_salary: {
       type: Number,
       required: [true, "Can't create a Salary Slip without Total Salary"],
@@ -73,7 +71,7 @@ const salarySlipSchema = new mongoose.Schema(
 salarySlipSchema.index(
   {
     employee_id: 1,
-    "attendance.0.month_year": 1,
+    "attendance.month_year": 1,
   },
   { unique: true }
 );

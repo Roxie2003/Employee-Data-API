@@ -27,9 +27,9 @@ const getSalarySlipByMonthYear = async (req, res) => {
   try {
     const EmployeeId = req.params.id;
     console.log(EmployeeId);
-    let SalarySlipsByEmpId = await SalarySlip.find({
+    let SalarySlipsByEmpId = await SalarySlip.findOne({
       employee_id: EmployeeId,
-      "attendance.0.month_year": req.params.month_year,
+      "attendance.month_year": req.params.month_year,
     });
     res.status(200).json({ data: SalarySlipsByEmpId });
     return;
