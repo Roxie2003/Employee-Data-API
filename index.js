@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const mongooseConnection = require("./helpers/mongodb-connection");
 const allEmployeeRoutes = require("./routes/allEmployees");
+const allAdminRoutes = require("./routes/allAdmin");
 const allSalarySlipRoutes = require("./routes/allSalarySlips");
 const PORT = 8000;
 
@@ -20,6 +21,7 @@ app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/employees", allEmployeeRoutes);
+app.use("/api/admin", allAdminRoutes);
 app.use("/api/salarySlips", allSalarySlipRoutes);
 
 app.get("/", (req, res) => {

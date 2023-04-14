@@ -57,7 +57,7 @@ const updateEmployee = async (req, res) => {
     } = req.body;
     const EmployeeById = await Employee.findById(req.params.id);
     if (!EmployeeById) {
-      req.status(400);
+      res.status(400);
       throw new Error("Employee not found!");
     }
 
@@ -113,7 +113,7 @@ const loginEmployee = async (req, res) => {
     let EmployeeByEmail = await Employee.findOne({ email });
 
     if (!EmployeeByEmail) {
-      req.status(400);
+      res.status(400);
       throw new Error("Employee not found!");
     }
 
