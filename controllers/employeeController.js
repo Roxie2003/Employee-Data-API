@@ -4,23 +4,13 @@ const createEmployee = async (req, res) => {
   try {
     const {
       name,
-      image,
-      base_salary,
-      designation,
-      location,
-      date_of_joining,
-      bank_details,
-      attendance,
+      email,
+      password,
     } = req.body;
     let newEmployee = new Employee({
       name,
-      image,
-      base_salary,
-      designation,
-      location,
-      date_of_joining,
-      bank_details,
-      attendance,
+      email,
+      password,
     });
     await newEmployee.save();
     res.status(200).json({ data: newEmployee });
@@ -62,7 +52,8 @@ const updateEmployee = async (req, res) => {
       location,
       date_of_joining,
       bank_details,
-      attendance,
+      email,
+      password,
     } = req.body;
     const EmployeeById = await Employee.findById(req.params.id);
     if (!EmployeeById) {
@@ -81,7 +72,8 @@ const updateEmployee = async (req, res) => {
           location,
           date_of_joining,
           bank_details,
-          attendance,
+          email,
+          password,
         },
         { new: true }
       );
@@ -112,10 +104,40 @@ const deleteEmployee = async (req, res) => {
   }
 };
 
+const loginEmployee = async (req, res) => {
+  try {
+    const {
+      email,
+      password,
+    } = req.body;
+    let EmployeeByEmail = await Employee.findOne({ email });
+
+    if (!EmployeeByEmail) {
+      req.status(400);
+      throw new Error("Employee not found!");
+    }
+
+    if (EmployeeByEmail) {
+      if(EmployeeByEmail.email === email && EmployeeByEmail.password === password ){
+        res.status(200).json({ sucess: true });
+        return;
+      }
+      else{
+        res.status(200).json({ success: false, error: 'Invalid Credentials' })
+        return;
+      }
+    }
+
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   createEmployee,
   getAllEmployees,
   getSingleEmployee,
   updateEmployee,
   deleteEmployee,
+  loginEmployee,
 };
