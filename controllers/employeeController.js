@@ -1,4 +1,5 @@
 const Employee = require("../models/Employee");
+const jwt = require('jsonwebtoken');
 
 const createEmployee = async (req, res) => {
   try {
@@ -7,13 +8,22 @@ const createEmployee = async (req, res) => {
       email,
       password,
     } = req.body;
+
+    let EmployeeByEmail = await Employee.findOne({ email });
+
+    if (EmployeeByEmail) {
+      res.status(200).json({ success: false, error: 'Account with this email already exist. Please Login' })
+      return;
+    }
+
     let newEmployee = new Employee({
       name,
       email,
       password,
     });
     await newEmployee.save();
-    res.status(200).json({ data: newEmployee });
+    let token = jwt.sign({email , name }, process.env.JWT_SECRET);
+    res.status(200).json({ data: newEmployee, token });
     return;
   } catch (error) {
     res.status(400).json(error.message);
@@ -113,13 +123,14 @@ const loginEmployee = async (req, res) => {
     let EmployeeByEmail = await Employee.findOne({ email });
 
     if (!EmployeeByEmail) {
-      res.status(400);
-      throw new Error("Employee not found!");
+      res.status(200).json({ success: false, error: 'Account not found Please Signup' })
+      return;
     }
 
     if (EmployeeByEmail) {
       if(EmployeeByEmail.email === email && EmployeeByEmail.password === password ){
-        res.status(200).json({ sucess: true });
+        let token = jwt.sign({ email }, process.env.JWT_SECRET);
+        res.status(200).json({ sucess: true, token });
         return;
       }
       else{

@@ -1,4 +1,5 @@
 const Admin = require("../models/Admin");
+const jwt = require('jsonwebtoken');
 
 const createAdmin = async (req, res) => {
   try {
@@ -7,13 +8,22 @@ const createAdmin = async (req, res) => {
       email,
       password,
     } = req.body;
+
+    let AdminByEmail = await Admin.findOne({ email });
+
+    if (AdminByEmail) {
+      res.status(200).json({ success: false, error: 'Account with this email already exist. Please Login' })
+      return;
+    }
+
     let newAdmin = new Admin({
       name,
       email,
       password,
     });
     await newAdmin.save();
-    res.status(200).json({ data: newAdmin });
+    let token = jwt.sign({email , name }, process.env.JWT_SECRET);
+    res.status(200).json({ success: true, data: newAdmin, token });
     return;
   } catch (error) {
     res.status(400).json(error.message);
@@ -101,13 +111,14 @@ const loginAdmin = async (req, res) => {
     let AdminByEmail = await Admin.findOne({ email });
 
     if (!AdminByEmail) {
-      res.status(400);
-      throw new Error("Admin not found!");
+      res.status(200).json({ success: false, error: 'Account not found Please Signup' })
+      return;
     }
 
     if (AdminByEmail) {
       if(AdminByEmail.email === email && AdminByEmail.password === password ){
-        res.status(200).json({ sucess: true });
+        let token = jwt.sign({email , name }, process.env.JWT_SECRET);
+        res.status(200).json({ sucess: true, token });
         return;
       }
       else{
