@@ -23,7 +23,7 @@ const createEmployee = async (req, res) => {
     });
     await newEmployee.save();
     let token = jwt.sign({email , name }, process.env.JWT_SECRET);
-    res.status(200).json({ data: newEmployee, token });
+    res.status(200).json({ sucess: true, data: newEmployee, token });
     return;
   } catch (error) {
     res.status(400).json(error.message);
