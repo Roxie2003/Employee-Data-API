@@ -23,7 +23,7 @@ const createAdmin = async (req, res) => {
     });
     await newAdmin.save();
     let token = jwt.sign({email , name }, process.env.JWT_SECRET);
-    res.status(200).json({ success: true, data: newAdmin, token });
+    res.status(200).json({ success: true, email: newAdmin.email, token });
     return;
   } catch (error) {
     res.status(400).json(error.message);
@@ -45,6 +45,17 @@ const getSingleAdmin = async (req, res) => {
     const AdminId = req.params.id;
     let AdminById = await Admin.findOne({ _id: AdminId });
     res.status(200).json({ data: AdminById });
+    return;
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const getAdminByEmail = async (req, res) => {
+  try {
+    const AdminEmail = req.params.email;
+    let AdminByEmail = await Admin.findOne({ email: AdminEmail });
+    res.status(200).json({ data: AdminByEmail });
     return;
   } catch (error) {
     res.status(400).json(error.message);
@@ -118,7 +129,7 @@ const loginAdmin = async (req, res) => {
     if (AdminByEmail) {
       if(AdminByEmail.email === email && AdminByEmail.password === password ){
         let token = jwt.sign({ email }, process.env.JWT_SECRET);
-        res.status(200).json({ sucess: true, token });
+        res.status(200).json({ sucess: true, token, email: AdminByEmail.email });
         return;
       }
       else{
@@ -136,6 +147,7 @@ module.exports = {
   createAdmin,
   getAllAdmins,
   getSingleAdmin,
+  getAdminByEmail,
   updateAdmin,
   deleteAdmin,
   loginAdmin,

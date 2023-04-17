@@ -23,7 +23,7 @@ const createEmployee = async (req, res) => {
     });
     await newEmployee.save();
     let token = jwt.sign({email , name }, process.env.JWT_SECRET);
-    res.status(200).json({ sucess: true, data: newEmployee, token });
+    res.status(200).json({ sucess: true, email: newEmployee.email, token });
     return;
   } catch (error) {
     res.status(400).json(error.message);
@@ -45,6 +45,17 @@ const getSingleEmployee = async (req, res) => {
     const EmployeeId = req.params.id;
     let EmployeeById = await Employee.findOne({ _id: EmployeeId });
     res.status(200).json({ data: EmployeeById });
+    return;
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const getEmployeeByEmail = async (req, res) => {
+  try {
+    const EmployeeEmail = req.params.email;
+    let EmployeeByEmail = await Employee.findOne({ email: EmployeeEmail });
+    res.status(200).json({ data: EmployeeByEmail });
     return;
   } catch (error) {
     res.status(400).json(error.message);
@@ -130,7 +141,7 @@ const loginEmployee = async (req, res) => {
     if (EmployeeByEmail) {
       if(EmployeeByEmail.email === email && EmployeeByEmail.password === password ){
         let token = jwt.sign({ email }, process.env.JWT_SECRET);
-        res.status(200).json({ sucess: true, token });
+        res.status(200).json({ sucess: true, token, email: EmployeeByEmail.email });
         return;
       }
       else{
@@ -148,6 +159,7 @@ module.exports = {
   createEmployee,
   getAllEmployees,
   getSingleEmployee,
+  getEmployeeByEmail,
   updateEmployee,
   deleteEmployee,
   loginEmployee,
