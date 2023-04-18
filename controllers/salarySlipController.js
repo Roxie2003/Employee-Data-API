@@ -21,6 +21,17 @@ const getSalarySlips = async (req, res) => {
   }
 };
 
+const getSalarySlipByEmail = async (req, res) => {
+  try {
+    const EmployeeEmail = req.params.email;
+    let SalarySlipByEmail = await Employee.findOne({ email: EmployeeEmail });
+    res.status(200).json({ data: SalarySlipByEmail });
+    return;
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 const getSalarySlipByMonthYear = async (req, res) => {
   try {
     const EmployeeId = req.params.id;
@@ -56,6 +67,7 @@ const deleteSalarySlip = async (req, res) => {
 module.exports = {
   createSalarySlip,
   getSalarySlips,
+  getSalarySlipByEmail,
   getSalarySlipByMonthYear,
   deleteSalarySlip,
 };

@@ -6,6 +6,10 @@ const salarySlipSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please add name"],
     },
+    email: {
+      type: String,
+      required: [true, "Please add email"],
+    },
     designation: {
       type: String,
       required: [true, "Please add designation"],
