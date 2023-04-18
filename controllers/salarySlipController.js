@@ -24,7 +24,7 @@ const getSalarySlips = async (req, res) => {
 const getSalarySlipByEmail = async (req, res) => {
   try {
     const EmployeeEmail = req.params.email;
-    let SalarySlipByEmail = await SalarySlip.findOne({ email: EmployeeEmail });
+    let SalarySlipByEmail = await SalarySlip.find({ email: EmployeeEmail });
     res.status(200).json({ data: SalarySlipByEmail });
     return;
   } catch (error) {
@@ -41,6 +41,30 @@ const getSalarySlipByMonthYear = async (req, res) => {
     });
     res.status(200).json({ data: SalarySlipsByEmpId });
     return;
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const updateSalarySlip = async (req, res) => {
+  try {
+    const SalarySlipId = req.params.id;
+    const SalarySlipById = await SalarySlip.findById(req.params.id);
+    if (!SalarySlipById) {
+      res.status(400);
+      throw new Error("Salary Slip not found!");
+    }
+
+    if (SalarySlipById) {
+      let updatedSalarySlip = await SalarySlip.findByIdAndUpdate(
+        SalarySlipId,
+        req.body,
+        { new: true }
+      );
+
+      res.status(200).json({ data: updatedSalarySlip });
+      return;
+    }
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -69,5 +93,6 @@ module.exports = {
   getSalarySlips,
   getSalarySlipByEmail,
   getSalarySlipByMonthYear,
+  updateSalarySlip,
   deleteSalarySlip,
 };
