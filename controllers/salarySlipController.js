@@ -24,7 +24,7 @@ const getSalarySlips = async (req, res) => {
 const getSalarySlipByEmail = async (req, res) => {
   try {
     const EmployeeEmail = req.params.email;
-    let SalarySlipByEmail = await Employee.findOne({ email: EmployeeEmail });
+    let SalarySlipByEmail = await SalarySlip.findOne({ email: EmployeeEmail });
     res.status(200).json({ data: SalarySlipByEmail });
     return;
   } catch (error) {
