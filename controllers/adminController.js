@@ -22,7 +22,7 @@ const createAdmin = async (req, res) => {
       password,
     });
     await newAdmin.save();
-    let token = jwt.sign({email , name }, process.env.JWT_SECRET);
+    let token = jwt.sign({ email, name }, process.env.JWT_SECRET);
     res.status(200).json({ success: true, email: newAdmin.email, token });
     return;
   } catch (error) {
@@ -127,15 +127,38 @@ const loginAdmin = async (req, res) => {
     }
 
     if (AdminByEmail) {
-      if(AdminByEmail.email === email && AdminByEmail.password === password ){
+      if (AdminByEmail.email === email && AdminByEmail.password === password) {
         let token = jwt.sign({ email }, process.env.JWT_SECRET);
         res.status(200).json({ sucess: true, token, email: AdminByEmail.email });
         return;
       }
-      else{
+      else {
         res.status(200).json({ success: false, error: 'Invalid Credentials' })
         return;
       }
+    }
+
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const gauthLoginAdmin = async (req, res) => {
+  try {
+    const {
+      email,
+    } = req.body;
+    let AdminByEmail = await Admin.findOne({ email });
+
+    if (!AdminByEmail) {
+      res.status(200).json({ success: false, error: 'Account not found Please Signup' })
+      return;
+    }
+
+    if (AdminByEmail) {
+      let token = jwt.sign({ email }, process.env.JWT_SECRET);
+      res.status(200).json({ sucess: true, token, email: AdminByEmail.email });
+      return;
     }
 
   } catch (error) {
@@ -151,4 +174,5 @@ module.exports = {
   updateAdmin,
   deleteAdmin,
   loginAdmin,
+  gauthLoginAdmin,
 };

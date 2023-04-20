@@ -22,7 +22,34 @@ const createEmployee = async (req, res) => {
       password,
     });
     await newEmployee.save();
-    let token = jwt.sign({email , name }, process.env.JWT_SECRET);
+    let token = jwt.sign({ email, name }, process.env.JWT_SECRET);
+    res.status(200).json({ sucess: true, email: newEmployee.email, token });
+    return;
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
+const gauthCreateEmployee = async (req, res) => {
+  try {
+    const {
+      name,
+      email,
+    } = req.body;
+
+    let EmployeeByEmail = await Employee.findOne({ email });
+
+    if (EmployeeByEmail) {
+      res.status(200).json({ success: false, error: 'Account with this email already exist. Please Login' })
+      return;
+    }
+
+    let newEmployee = new Employee({
+      name,
+      email,
+    });
+    await newEmployee.save();
+    let token = jwt.sign({ email, name }, process.env.JWT_SECRET);
     res.status(200).json({ sucess: true, email: newEmployee.email, token });
     return;
   } catch (error) {
@@ -139,12 +166,12 @@ const loginEmployee = async (req, res) => {
     }
 
     if (EmployeeByEmail) {
-      if(EmployeeByEmail.email === email && EmployeeByEmail.password === password ){
+      if (EmployeeByEmail.email === email && EmployeeByEmail.password === password) {
         let token = jwt.sign({ email }, process.env.JWT_SECRET);
         res.status(200).json({ sucess: true, token, email: EmployeeByEmail.email });
         return;
       }
-      else{
+      else {
         res.status(200).json({ success: false, error: 'Invalid Credentials' })
         return;
       }
@@ -155,12 +182,37 @@ const loginEmployee = async (req, res) => {
   }
 };
 
+const gauthLoginEmployee = async (req, res) => {
+  try {
+    const {
+      email,
+    } = req.body;
+    let EmployeeByEmail = await Employee.findOne({ email });
+
+    if (!EmployeeByEmail) {
+      res.status(200).json({ success: false, error: 'Account not found Please Signup' })
+      return;
+    }
+
+    if (EmployeeByEmail) {
+      let token = jwt.sign({ email }, process.env.JWT_SECRET);
+      res.status(200).json({ sucess: true, token, email: EmployeeByEmail.email });
+      return;
+    }
+
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+
 module.exports = {
   createEmployee,
+  gauthCreateEmployee,
   getAllEmployees,
   getSingleEmployee,
   getEmployeeByEmail,
   updateEmployee,
   deleteEmployee,
   loginEmployee,
+  gauthLoginEmployee,
 };
