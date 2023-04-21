@@ -13,7 +13,9 @@ const createSalarySlip = async (req, res) => {
 
 const getSalarySlips = async (req, res) => {
   try {
-    let SalarySlipsByEmpId = await SalarySlip.find();
+    let SalarySlipsByEmpId = await SalarySlip.find().sort({
+      createdAt: "desc",
+    });
     res.status(200).json({ data: SalarySlipsByEmpId });
     return;
   } catch (error) {

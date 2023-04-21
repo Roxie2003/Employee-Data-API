@@ -1,18 +1,17 @@
 const Admin = require("../models/Admin");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const createAdmin = async (req, res) => {
   try {
-    const {
-      name,
-      email,
-      password,
-    } = req.body;
+    const { name, email, password } = req.body;
 
     let AdminByEmail = await Admin.findOne({ email });
 
     if (AdminByEmail) {
-      res.status(200).json({ success: false, error: 'Account with this email already exist. Please Login' })
+      res.status(200).json({
+        success: false,
+        error: "Account with this email already exist. Please Login",
+      });
       return;
     }
 
@@ -65,11 +64,7 @@ const getAdminByEmail = async (req, res) => {
 const updateAdmin = async (req, res) => {
   try {
     const AdminId = req.params.id;
-    const {
-      name,
-      email,
-      password,
-    } = req.body;
+    const { name, email, password } = req.body;
     const AdminById = await Admin.findById(req.params.id);
     if (!AdminById) {
       res.status(400);
@@ -115,29 +110,28 @@ const deleteAdmin = async (req, res) => {
 
 const loginAdmin = async (req, res) => {
   try {
-    const {
-      email,
-      password,
-    } = req.body;
+    const { email, password } = req.body;
     let AdminByEmail = await Admin.findOne({ email });
 
     if (!AdminByEmail) {
-      res.status(200).json({ success: false, error: 'Account not found Please Signup' })
+      res
+        .status(200)
+        .json({ success: false, error: "Account not found Please Signup" });
       return;
     }
 
     if (AdminByEmail) {
       if (AdminByEmail.email === email && AdminByEmail.password === password) {
         let token = jwt.sign({ email }, process.env.JWT_SECRET);
-        res.status(200).json({ sucess: true, token, email: AdminByEmail.email });
+        res
+          .status(200)
+          .json({ sucess: true, token, email: AdminByEmail.email });
         return;
-      }
-      else {
-        res.status(200).json({ success: false, error: 'Invalid Credentials' })
+      } else {
+        res.status(200).json({ success: false, error: "Invalid Credentials" });
         return;
       }
     }
-
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -145,13 +139,13 @@ const loginAdmin = async (req, res) => {
 
 const gauthLoginAdmin = async (req, res) => {
   try {
-    const {
-      email,
-    } = req.body;
+    const { email } = req.body;
     let AdminByEmail = await Admin.findOne({ email });
 
     if (!AdminByEmail) {
-      res.status(200).json({ success: false, error: 'Account not found Please Signup' })
+      res
+        .status(200)
+        .json({ success: false, error: "Account not found Please Signup" });
       return;
     }
 
@@ -160,7 +154,6 @@ const gauthLoginAdmin = async (req, res) => {
       res.status(200).json({ sucess: true, token, email: AdminByEmail.email });
       return;
     }
-
   } catch (error) {
     res.status(400).json(error.message);
   }

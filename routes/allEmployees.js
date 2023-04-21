@@ -7,6 +7,7 @@ const {
   getSingleEmployee,
   getEmployeeByEmail,
   updateEmployee,
+  changeEmployeePassword,
   deleteEmployee,
   loginEmployee,
   gauthLoginEmployee,
@@ -19,6 +20,7 @@ router.get("/", getAllEmployees);
 router.get("/:id", getSingleEmployee);
 router.get("/email/:email", getEmployeeByEmail);
 router.patch("/:id", updateEmployee);
+router.patch("/changePassword/:id", changeEmployeePassword);
 router.delete("/:id", deleteEmployee);
 router.post("/login", loginEmployee);
 router.post("/login/gauth/", gauthLoginEmployee);
